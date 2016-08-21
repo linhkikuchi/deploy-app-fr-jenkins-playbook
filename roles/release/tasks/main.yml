@@ -1,0 +1,22 @@
+---
+- name: stop tomcat service
+  shell: nohup ./bin/shutdown.sh
+  args:
+    chdir: "{{ APP_HOME }}/"
+
+- name: remove existing war and cache and context file
+  command: "{{ item }}" 
+  with_items:
+   - rm -rf "{{ APP_HOME }}/work/Catalina/localhost/*"
+   - rm -rf "{{ APP_HOME }}/conf/Catalina/localhost/*"
+
+- name: copy war file and conf file from jenkins to servers
+  command: "{{ item }}"
+  with_items:
+   - copy: src="{{ JENKINS_DIR }}/dist/app.war" dest="{{ APP_HOME }}/" owner="{{ deploy_user }}" group="{{ user_group }}" mode=0644
+   - copy: src="{{ JENKINS_DIR }}/conf/" dest="{{ APP_HOME }}/conf/" owner="{{ deploy_user }}" group="{{ user_group }}" mode=0644
+
+- name: start tomcat service
+  shell: nohup ./bin/startup.sh
+  args:
+    chdir: "{{ APP_HOME }}/"

@@ -1,0 +1,7 @@
+---
+- hosts: appserver
+  serial: 1
+  user: "{{ deploy_user }}"
+  gather_facts: true
+  roles:
+    - release

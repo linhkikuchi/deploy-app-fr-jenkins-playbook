@@ -1,0 +1,7 @@
+[staging:children]
+appserver
+
+[appserver]
+stg-appserver1
+stg-appserver2
+stg-appserver3

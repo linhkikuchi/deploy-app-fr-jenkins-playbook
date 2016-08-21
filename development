@@ -1,0 +1,7 @@
+[development:children]
+appserver
+
+[appserver]
+dev-appserver1
+dev-appserver2
+dev-appserver3
