@@ -1,9 +1,8 @@
 #Read Me
+
 #-------------------------------------------------------------------
-# This playbook is used to deploy a web application running on Tomcat
-# from jenkins
-# Deployment is not done concurrently to all servers, but to be done
-# one by one
+# This playbook is used to deploy a web application running on Tomcat from jenkins
+# Deployment is not done concurrently to all servers, but to be done one by one
 # serial: 1
 # gather_facts: true
 #-------------------------------------------------------------------
