@@ -1,4 +1,5 @@
 ---
 deploy_user: tomcat
+user_group: dev_group
 
 
